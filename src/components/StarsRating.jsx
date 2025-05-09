@@ -1,12 +1,12 @@
 import { useState } from "react";
-import StarOutline from "./icons/StarOutline";
-import StarSolid from "./icons/StarSolid";
+import StarOutline from "./Icons/StarOutline";
+import StarSolid from "./Icons/StarSolid";
 
 const StarsRating = ({
   defaultHowMany = 0,
   disabled,
   size = "md",
-  onChange = () => {},
+  onChange = (star) => {}, // Fixed: now accepts parameter
 }) => {
   const [howMany, setHowMany] = useState(defaultHowMany);
 
@@ -17,7 +17,7 @@ const StarsRating = ({
       return;
     }
     setHowMany(star);
-    onChange(star);
+    onChange(star); // Now matches the function signature
   };
 
   return (
