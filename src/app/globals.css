@@ -2,26 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.active {
+  position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.active::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+.image-shadow {
+  @apply relative;
+}
+
+.image-shadow::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 10px;
+  border-radius: 50%;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  opacity: 0.5;
+  filter: blur(3px);
+}
+
+.colors {
+  @apply relative;
+}
+
+.colors::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  left: 60%;
+  transform: translateX(-10%);
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.colors:nth-child(1)::after {
+  background-color: #fff;
+}
+.colors:nth-child(2)::after {
+  background-color: #ff0000;
+}
+.colors:nth-child(3)::after {
+  background-color: #008000;
+}
+.colors:nth-child(4)::after {
+  background-color: #000;
 }
